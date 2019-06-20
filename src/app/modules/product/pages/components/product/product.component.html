@@ -65,17 +65,22 @@
                         <div class="hdca-product-box__main-purchase-price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                             <span itemprop="priceCurrency" content="CAD"></span>
                             <link itemprop="itemCondition" href="http://schema.org/NewCondition" content="New" />
-                            <div class="hdca-product-box__main-purchase-price-entry">
-                                <span *ngIf="product.price2" class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">${{product.price2}}</span>
-                                <span *ngIf="product.cuom2" class="hdca-product-box__main-purchase-price-entry-content"> / {{product.cuom2}}</span>
-                            </div>
-                            <div class="hdca-product-box__main-purchase-price-entry">
-                                <span *ngIf="product.price1; else noprimaryprice" class="hdca-product-box__main-purchase-price-entry-content">
-                                    $
-                                    <span itemprop="price">{{product.price1}}</span>
-                                    <ng-container *ngIf="product.cuom1"> / {{product.cuom1}}</ng-container>
-                                </span>
-                            </div>
+                            <ng-container *ngIf="PriceTags.length > 0; else noprimaryprice">
+
+                                <div *ngIf="PriceTags[0]" class="hdca-product-box__main-purchase-price-entry">
+                                    <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">${{PriceTags[0].price | number:'0.2-2'}}</span>
+                                    <span *ngIf="PriceTags[0].cuom" class="hdca-product-box__main-purchase-price-entry-content"> / {{PriceTags[0].cuom}}</span>
+                                </div>
+                                <div *ngIf="PriceTags[1]" class="hdca-product-box__main-purchase-price-entry">
+                                    <span class="hdca-product-box__main-purchase-price-entry-content">
+                                        $
+                                        <span itemprop="price">{{PriceTags[1].price | number:'0.2-2'}}</span>
+                                        <ng-container *ngIf="product.cuom1"> / {{PriceTags[1].cuom}}</ng-container>
+                                    </span>
+                                </div>
+
+                            </ng-container>
+                            
                             <div *ngIf="product.saving" class="hdca-product-box__main-purchase-price-entry hdca-product-box__main-purchase-price-entry--savings">
                                 <time itemprop="priceValidUntil" datetime="2020-11-05"></time>
                                 <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">Save {{product.saving}}%</span>
