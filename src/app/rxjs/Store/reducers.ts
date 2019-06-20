@@ -1,58 +1,50 @@
 
-import { session, State, Product, Events, Actions} from './';
 
 
+import { actions } from './actions';
+import { Events, Product, State } from './definitions';
+import { products, ProductAdapter } from './session';
 
-export function mapProducts(
-    state = session,
-    action: Actions
+
+export function ManageProducts(
+    state = products,
+    action: actions
 ): State {
     switch (action.type) {
         case Events.Products: {
-            action.payload.forEach((product) => {
+            state = ProductAdapter.addAll(action.payload, state);
+            console.log("New Products", state);
+            return state;
+        }
+        case Events.Product: {
+            state = ProductAdapter.addOne(action.payload, state);
+            state.productId = action.payload.id;
+            console.log("New Product", state);
+            return state;
+        }
+        case Events.RemoveProduct: {
 
-
-            });
-            return {
-                
-            
+            return state;
+        }
+        case Events.Reset: {
+            if (action.message) {
+                console.log(action.message);
             }
+
+            return state;
+        }
+        case Events.Error: {
+            console.error("Request Error", action.error);
+        }
+        case Events.Load: {
+            console.log("Loading Products", action);
+        }
+         
+        default: {
+            return state;
         }
 
             
 
     }
 }
-
-export function addProduct(state: State, product: Product) {
-
-}
-
-//    export function reducer(
-//        state = initialState,
-//        action: Scoreboard.ActionsUnion
-//    ): State {
-//    switch (action.type) {
-//        case Scoreboard.ActionTypes.IncrementHome: {
-//            return {
-//                ...state,
-//                home: state.home + 1,
-//            };
-//        }
-
-//        case Scoreboard.ActionTypes.IncrementAway: {
-//            return {
-//                ...state,
-//                away: state.away + 1,
-//            };
-//        }
-
-//        case Scoreboard.ActionTypes.Reset: {
-//            return action.payload; // typed to { home: number, away: number }
-//        }
-
-//        default: {
-//            return state;
-//        }
-//    }
-//}
