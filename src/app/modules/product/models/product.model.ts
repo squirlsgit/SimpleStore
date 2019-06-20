@@ -15,3 +15,8 @@
     badges?: string[];
     promo?: string;
 }
+
+export enum addToCart {
+    addToCart = 'Add To Cart',
+    viewDetails = 'View Details'
+}

@@ -225,3 +225,9 @@ pickle-email-*.html
 
 # Ignore node_modules
 node_modules/
+.vs/slnx.sqlite
+.vs/frontend-angular-sept6-2018-g2lp7bpgt2n/v15/.suo
+.vs/ProjectSettings.json
+*.config
+*.db
+*.opendb
