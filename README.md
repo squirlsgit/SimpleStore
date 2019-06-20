@@ -44,3 +44,39 @@ Ngrx
 15. Implements entity adapter for state creation (5)
 16. Implements entity adapter to initialize state (2.5)
 17. Implements entity adapter to store state in reducer (2.5)
+
+
+
+
+###### Editor: Nicholas C. Taggart-Janes
+
+# Where to find solutions to the above Requirements
+
+All solutions for UI (that is 1-8 and in part 11) can be found under src/app/modules/product/pages as @product from here on out in this comment section
+
+Solution for 2. can be found in @product/pages/components and in particular @product/pages/components/product
+Solution for 3. can also be found here.
+Solution for 4. is ... well to be honest I'm confused by what is meant by partialized components, but I hope @product/pages/components will suffice for this requirement.
+Solution for 5. can be found in @product/pages/components/product and @product/pages/components/rating
+Solution for 6. can be found in @product/pages/components/badge
+Solution for 7. is @product
+Solution for 8. is <Already Sufficiently Implemented By Initial App>?
+
+Rxjs solutions can be found primarily in src/app/rxjs/ProductsService
+Rxjs problem 10 and 11 are tied into the Ngrx implementation though
+
+Ngrx solution can be found primarily in src/app/rxjs/Store.
+12-14 solutions can be found in files with those respective names.
+Entity adapter solutions can be found in src/app/rxjs/Store/session and src/app/rxjs/Store/reducers and src/app/rxjs/Store/definitions
+
+# Additional Comments
+
+I sent an email to clarify some of my confusion earlier, but I may not receive a response in time, if at all.
+
+I am confused by what is meant by partialized components. It is not a term I am familiar with, nor is it one I can find easily with google, if at all? 
+
+So I interpretted it based on what I have experience with which is nesting components inside other components for modularity.
+
+I am confused why Requirement 8 is here since it is not clear how I should change the json file or the service based on this and any other requirement.
+
+
