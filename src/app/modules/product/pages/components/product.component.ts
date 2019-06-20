@@ -1,14 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State, Events, Product } from '../../../';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'product-page',
-    templateUrl: 'product.page.html'
+    selector: 'product',
+    templateUrl: 'product.component.html'
 })
-export class ProductPage implements OnInit {
-    public product: Product
+export class ProductComponent implements OnInit {
+    @Input('product')
+
+    public set product(p: Product) {
+        console.log("Setting a new product ", p);
+        this._product = p;
+    }
+    public get product(): Product {
+        return this._product;
+    }
+    protected _product: Product;
+
     protected products$: Observable<any>;
     constructor(protected store: Store<{ products: State }>) {
         this.products$ = this.store.select(state => state.products);
@@ -16,14 +26,7 @@ export class ProductPage implements OnInit {
 
     ngOnInit() {
 
-
-        this.store.dispatch({ type: Events.LoadProduct, id: '1731002612' });
-        this.products$.subscribe(products => {
-            console.log("new product", products.productId);
-            console.log("Products", products);
-            this.product = products.entities[products.productId];
-
-        });
+       
     }
 
 }
