@@ -20,10 +20,10 @@ export class ProductPage implements OnInit {
             this.store.dispatch({ type: Events.LoadProduct, id: params.id });
         });
         
-        this.store.select('products', 'entities').subscribe(success => {
-            console.log("Got us some mucha", success);
+        //this.store.select('products', 'entities').subscribe(success => {
 
-        });
+        //});
+
         //this.products$.subscribe(products => {
         //    console.log("new product", products.productId);
         //    console.log("Products", products);

@@ -56,10 +56,13 @@ All solutions for UI (that is 1-8 and in part 11) can be found under src/app/mod
 
 Solution for 2. can be found in @product/pages/components and in particular @product/pages/components/product
 Solution for 3. can also be found here.
-Solution for 4. is ... well to be honest I'm confused by what is meant by partialized components, but I hope @product/pages/components will suffice for this requirement.
-Solution for 5. can be found in @product/pages/components/product and @product/pages/components/rating
-Solution for 6. can be found in @product/pages/components/badge
-Solution for 7. is @product
+Solution for 4. I hope @product/pages/components will suffice for this requirement.
+Solution for 5. can be found in @product/pages/components/product and @product/pages/components/rating; rating achieves solution 5 by using the ngrx store service class.
+Solution for 6. can be found in @product/pages/components/badge where the badge component recieves a url extension and acquires the correct svg with a simple Input.
+Solution for 7. is @product I believe. I did not know if formatting referred to the ... minimalist styling of the pages. 
+
+I did format the product as best I could, but I would describe this as html interpolation, not formatting.
+
 Solution for 8. is <Already Sufficiently Implemented By Initial App>?
 
 Rxjs solutions can be found primarily in src/app/rxjs/ProductsService
@@ -83,9 +86,9 @@ However, it seems the addresses used by default are being listened on already. F
 but I'm more nervous to change the port for the proxy server.
 
 
-# Additional Comments
+# Additional Comments: Might be useful if one is confused about why I implemented components in the way I did.
 
-I sent an email to clarify some of my confusion earlier, but I may not receive a response in time, if at all.
+I sent an email to ask for clarification earlier, but I may not receive a response in time, if at all.
 
 I am confused by what is meant by partialized components. It is not a term I am familiar with, nor is it one I can find easily with google, if at all? 
 

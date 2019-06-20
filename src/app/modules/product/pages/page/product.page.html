@@ -1,5 +1,5 @@
 <ng-container *ngIf="product$ | async as product; else noProduct">
-    <product [product]="product$ | async"></product>
+    <product [product]="product"></product>
 </ng-container>
 
 <ng-template #noProduct>
