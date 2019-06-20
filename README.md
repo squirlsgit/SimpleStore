@@ -69,6 +69,20 @@ Ngrx solution can be found primarily in src/app/rxjs/Store.
 12-14 solutions can be found in files with those respective names.
 Entity adapter solutions can be found in src/app/rxjs/Store/session and src/app/rxjs/Store/reducers and src/app/rxjs/Store/definitions
 
+
+# Important Comments
+
+Hi to whom it may concern at Home Depot or some associate,
+
+I'm using the online IDE to test that it works (already tested it locally). I am not sure how to go about testing it with the online IDE really, besides ensuring it compiles, 
+
+since I don't think I can access the webapp from where I am, just as I'm not sure what environment the solution will be run in.
+
+However, it seems the addresses used by default are being listened on already. For Node and Angular: 3000 and 8000 respectively. I've changed the port for angular cli to 8400, and it compiles, 
+
+but I'm more nervous to change the port for the proxy server.
+
+
 # Additional Comments
 
 I sent an email to clarify some of my confusion earlier, but I may not receive a response in time, if at all.
