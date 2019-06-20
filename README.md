@@ -59,9 +59,9 @@ Solution for 3. can also be found here.
 Solution for 4. I hope @product/pages/components will suffice for this requirement.
 Solution for 5. can be found in @product/pages/components/product and @product/pages/components/rating; rating achieves solution 5 by using the ngrx store service class.
 Solution for 6. can be found in @product/pages/components/badge where the badge component recieves a url extension and acquires the correct svg with a simple Input.
-Solution for 7. is @product I believe. I did not know if formatting referred to the ... minimalist styling of the pages. 
+Solution for 7. is @product I believe. I did not know if formatting referred to the minimalist styling of the pages.
 
-I did format the product as best I could, but I would describe this as html interpolation, not formatting.
+I did format the product to match the products demo, and I hope everything aligns well enough with the demo.
 
 Solution for 8. is <Already Sufficiently Implemented By Initial App>?
 
