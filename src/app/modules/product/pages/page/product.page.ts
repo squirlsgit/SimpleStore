@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import { Store } from '@ngrx/store';
-import { State, Events, Product } from '../../../';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Events, State } from '../../../';
 @Component({
     selector: 'product-page',
     templateUrl: 'product.page.html'
 })
 export class ProductPage implements OnInit {
     //public product: Product
-    protected products$: Observable<any>;
+    protected product$: Observable<any>;
     constructor(protected store: Store<{ products: State }>, public route: ActivatedRoute) {
-        this.products$ = this.store.select(state => state.products.entities[state.products.productId]);
+        this.product$ = this.store.select(state => state.products.entities[state.products.productId]);
     }
 
     ngOnInit() {

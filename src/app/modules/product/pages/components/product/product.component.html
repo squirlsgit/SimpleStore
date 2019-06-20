@@ -1,8 +1,5 @@
 
 <section class="hdca-product-listing">
-    {{product.id}}
-   
-
     <div class="hdca-product-grid">
         <div class="hdca-product-box-container" itemscope="" itemtype="http://schema.org/Product">
             <article class="hdca-product-box">
@@ -22,49 +19,45 @@
                     </div>
                     <a href="#" class="hdca-product-box__header-intro">
                         <div class="hdca-product-box__header-intro-img-box">
-                            <img class="hdca-product-box__header-intro-img" src="/assets/images/products/product_1.jpg" alt="can not find image" itemprop="image" />
+                            <img class="hdca-product-box__header-intro-img" src="{{'/assets/images/products/' + product.imageUrl}}" alt="can not find image" itemprop="image" />
                         </div>
                         <div class="hdca-product-box__intro-badges">
-                            <svg class="hdca-product-box__badge-svg" aria-hidden="true">
-                                <use xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#badge-ECO"></use>
-                            </svg>
-                            <svg class="hdca-product-box__badge-svg" aria-hidden="true">
-                                <use xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#badge-NLP"></use>
-                            </svg>
-                            <svg class="hdca-product-box__badge-svg" aria-hidden="true">
-                                <use xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#badge-SB"></use>
-                            </svg>
-                            <svg class="hdca-product-box__badge-svg" aria-hidden="true">
-                                <use xlink:href="/assets/icons/product-en-sprite/svg/symbols.svg#badge-ES"></use>
-                            </svg>
+                            <ng-container *ngIf="product.badges">
+
+                                <ng-container *ngFor="let badge of product.badges">
+                                    <badge [ref]="'/assets/icons/product-en-sprite/svg/symbols.svg#' + badge"></badge>
+                                </ng-container>
+
+                            </ng-container>
                         </div>
+                        
                     </a>
                 </section>
                 <section class="hdca-product-box__main">
                     <div class="hdca-product-box__main-info">
                         <link itemprop="url" href="#" />
+                        <div *ngIf="product.promo" class="hdca-product-box__main-info-promo">
+                            <span class="hdca-product-box__main-info-promo-content">{{product.promo}}</span>
+                        </div>
                         <a href="#" class="hdca-product-box__main-info-label hdca-product-box__main-info-label--link">
-                            <span class="hdca-product-box__main-info-label-entry hdca-product-box__main-info-label-entry--brand" itemprop="manufacturer">Home Decorators Collection</span>
-                            <span class="hdca-product-box__main-info-label-entry" itemprop="name">5.2 cu. ft. High-Efficiency Stackable Front-Load Washer in White</span>
+                            <span class="hdca-product-box__main-info-label-entry hdca-product-box__main-info-label-entry--brand" itemprop="manufacturer">{{product.brand}} </span>
+                            <span class="hdca-product-box__main-info-label-entry" itemprop="name">{{product.title}}</span>
                         </a>
                         <a href="#" class="hdca-product-box__main-info-detail hdca-product-box__main-info-detail--link">
                             <div class="hdca-product-box__main-info-detail-entry">
                                 Model #
-                                <span itemprop="model">7L12X165/8045CL</span>
+                                <span itemprop="model">{{product.model}}</span>
                             </div>
                             <div class="hdca-product-box__main-info-detail-entry">
                                 SKU #
-                                <span itemprop="sku">1731002612</span>
+                                <span itemprop="sku">{{product.id}}</span>
                             </div>
                         </a>
                         <div class="hdca-product-box__main-info-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
                             <a href="#rating" class="hdca-product-box__main-info-rating-link">
-                                <div class="hdca-product-box__main-info-rating-link-stars">
-                                    <span class="hdca-product-box__main-info-rating-link-stars-overlay" style="width:60%;"></span>
-                                </div>
-                                <meta itemprop="worstRating" content="1" />
-                                <meta itemprop="ratingValue" content="3" />
-                                <meta itemprop="bestRating" content="5" />
+                                
+                                <product-rating></product-rating>
+                                
                             </a>
                         </div>
                     </div>
@@ -73,29 +66,44 @@
                             <span itemprop="priceCurrency" content="CAD"></span>
                             <link itemprop="itemCondition" href="http://schema.org/NewCondition" content="New" />
                             <div class="hdca-product-box__main-purchase-price-entry">
-                                <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">$1.97</span>
-                                <span class="hdca-product-box__main-purchase-price-entry-content"> / sq. ft.</span>
+                                <span *ngIf="product.price2" class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">${{product.price2}}</span>
+                                <span *ngIf="product.cuom2" class="hdca-product-box__main-purchase-price-entry-content"> / {{product.cuom2}}</span>
                             </div>
                             <div class="hdca-product-box__main-purchase-price-entry">
-                                <span class="hdca-product-box__main-purchase-price-entry-content">
+                                <span *ngIf="product.price1; else noprimaryprice" class="hdca-product-box__main-purchase-price-entry-content">
                                     $
-                                    <span itemprop="price">34.00</span> / case
+                                    <span itemprop="price">{{product.price1}}</span>
+                                    <ng-container *ngIf="product.cuom1"> / {{product.cuom1}}</ng-container>
                                 </span>
                             </div>
-                            <div class="hdca-product-box__main-purchase-price-entry hdca-product-box__main-purchase-price-entry--savings">
+                            <div *ngIf="product.saving" class="hdca-product-box__main-purchase-price-entry hdca-product-box__main-purchase-price-entry--savings">
                                 <time itemprop="priceValidUntil" datetime="2020-11-05"></time>
-                                <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">Save 22%</span>
-                                <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--was"> Was $41.48</span>
+                                <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--primary">Save {{product.saving}}%</span>
+                                <span class="hdca-product-box__main-purchase-price-entry-content hdca-product-box__main-purchase-price-entry-content--was"> Was {{product.was || (product.price1 || product.price2) / ( 1 - product.saving / 100 )  | number:'0.2-2'}}</span>
                             </div>
                         </div>
-                        <div class="hdca-product-box__main-purchase-action hdca-product-box__main-purchase-action--tool-rental">
-                            <button id="button-1379" class="hdca-button2 hdca-button2--primary hdca-button2--is-narrow hdca-product-box__main-purchase-action-item">
-                                <span class="hdca-button2__label">Add To Cart</span>
+                        <div [ngSwitch]="product.addToCart" class="hdca-product-box__main-purchase-action hdca-product-box__main-purchase-action--tool-rental">
+
+                            <button *ngSwitchCase="'addToCart'" id="button-1379" class="hdca-button2 hdca-button2--primary hdca-button2--is-narrow hdca-product-box__main-purchase-action-item">
+                                <span class="hdca-button2__label">{{addToCart[product.addToCart]}}</span>
                             </button>
+
+
+                            <button *ngSwitchCase="'viewDetails'" id="button-1380" class="hdca-button2 hdca-button2--tertiary hdca-button2--is-narrow hdca-product-box__main-purchase-action-item">
+                                <span class="hdca-button2__label">{{addToCart[product.addToCart]}}</span>
+                            </button>
+
+
                         </div>
+                        
                     </div>
                 </section>
             </article>
         </div>
     </div>
 </section>
+
+<ng-template #noprimaryprice>
+    -
+
+</ng-template>
