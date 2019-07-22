@@ -231,3 +231,4 @@ node_modules/
 *.config
 *.db
 *.opendb
+.vs/VSWorkspaceState.json
